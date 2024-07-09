@@ -8,7 +8,7 @@ const Answers: React.FC<AnswerProps> = ({ answer }) => {
   return (
     <>
       <div className={styles.answerContainer}>
-        <p>{answer}</p>
+        <p className={styles.answerText}>{answer}</p>
       </div>
     </>
   );

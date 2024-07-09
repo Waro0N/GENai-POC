@@ -11,7 +11,7 @@ const Chat = () => {
       <div className={styles.container}>
         <div></div>
         <div className={styles.chatContainer}>
-          <UserQuestion question="Hi" />
+          <UserQuestion question="Hi! How can i help you? " />
           <div className={styles.answerContainer}>
             <Answers answer={"Hi! How can i help you?"} />
           </div>
