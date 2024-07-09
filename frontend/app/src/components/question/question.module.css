@@ -1,0 +1,16 @@
+.questionContainer {
+  display: flex;
+  background-color: bisque;
+  box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.5);
+  /* justify-content: flex-end; */
+  align-items: center;
+  max-width: 400px;
+  height: 50px;
+  margin-left: auto;
+  padding: 20px;
+}
+
+.text {
+  word-wrap: break-word;
+  word-break: break-all;
+}

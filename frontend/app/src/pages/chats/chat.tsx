@@ -1,33 +1,25 @@
 import * as THREE from "three";
+import styles from "./chats.module.css";
+import UserQuestion from "../../components/question/userQuestion";
+import Answers from "../../components/answers/answer";
 
 const Chat = () => {
-  function animate() {
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01;
+  // calling of ai services
 
-    renderer.render(scene, camera);
-  }
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(
-    75,
-    window.innerWidth / window.innerHeight,
-    0.1,
-    1000
+  return (
+    <>
+      <div className={styles.container}>
+        <div></div>
+        <div className={styles.chatContainer}>
+          <UserQuestion question="Hi" />
+          <div className={styles.answerContainer}>
+            <Answers answer={"Hi! How can i help you?"} />
+          </div>
+        </div>
+        <div className={styles.TextContainer}></div>
+      </div>
+    </>
   );
-
-  const renderer = new THREE.WebGLRenderer();
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setAnimationLoop(animate);
-  document.body.appendChild(renderer.domElement);
-
-  const geometry = new THREE.BoxGeometry(1, 1, 1);
-  const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-  const cube = new THREE.Mesh(geometry, material);
-  scene.add(cube);
-
-  camera.position.z = 5;
-
-  return <h1>chats</h1>;
 };
 
 export default Chat;
