@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException,Request
 from groq import Groq
 from ai_service.approaches.chatreadretrive.chatreadretrive import ChatReadRetrive 
 
@@ -13,8 +13,10 @@ client = Groq(
 
 chat_approaches = ChatReadRetrive(ai_model_name=CHAT_MODEL, client=client)
 
-@router.get("/")
-def chat_retrive():
-    r = chat_approaches.run()
-    print(r)
+@router.post("/")
+async def chat_retrive(requests: Request):
+    data = await requests.json()
+    question = data.get('question')
+    r = chat_approaches.run(question)
+    
     return(r)

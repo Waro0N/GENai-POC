@@ -4,7 +4,7 @@ class ChatReadRetrive:
         self.client=client
 
 
-    def run(self) -> any:
+    def run(self, question: str) -> any:
         completion = self.client.chat.completions.create(
         model=self.ai_model_name,
         messages=[
@@ -14,7 +14,7 @@ class ChatReadRetrive:
         },
         {
             "role": "user",
-            "content": "Hi",
+            "content": question,
         }
         ],
         temperature=1,
@@ -26,8 +26,7 @@ class ChatReadRetrive:
 
         ans=''
         for chunk in completion:
-            print(chunk)
             ans += str(chunk.choices[0].delta.content)
 
 
-        return ({"answer": ans})
+        return ({"question": question, "answer": ans})
