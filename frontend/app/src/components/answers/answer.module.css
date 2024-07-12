@@ -1,8 +1,6 @@
 .answerContainer {
   display: flex;
-  background-color: azure;
-  box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.5);
-  /* justify-content: flex-end; */
+  background-color: #010409;
   align-items: center;
   max-width: 700px;
   /* height: 50px; */
@@ -12,7 +10,6 @@
 }
 
 .answerText {
-  color: black;
   word-wrap: break-word;
   word-break: break-all;
 }

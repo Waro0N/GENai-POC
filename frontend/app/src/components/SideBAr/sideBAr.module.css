@@ -1,0 +1,18 @@
+.sideBarContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  height: 100vh;
+  width: 278px;
+  position: absolute;
+  background-color: #010409;
+}
+
+.newChatButton {
+  background-color: #29903b;
+  border: none;
+  height: 30px;
+  width: 100%;
+  cursor: pointer;
+  color: white;
+}

@@ -1,0 +1,20 @@
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #181d25;
+  border-radius: 10px;
+  width: 150px;
+  height: 150px;
+}
+
+.cardContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.card:hover {
+  background-color: #181d25;
+  cursor: pointer;
+}

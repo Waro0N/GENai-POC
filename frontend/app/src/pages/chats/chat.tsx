@@ -4,8 +4,10 @@ import styles from "./chats.module.css";
 import UserQuestion from "../../components/question/userQuestion";
 import Answers from "../../components/answers/answer";
 import UserInput from "../../components/userInput/userInput";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import NavBar from "../../components/navBar/navBar";
+import ExampleQuestion from "../../components/exampleCards.tsx/exampleQuestions";
+import SideBar from "../../components/SideBAr/sideBar";
 
 interface Answers {
   question: string;
@@ -14,48 +16,71 @@ interface Answers {
 
 const Chat = () => {
   const [ansStream, setAnswerStream] = useState<Answers[]>([]);
-  console.log(ansStream);
+  const ref = useRef("");
+  const [loading, setLoading] = useState(false);
+
   const handleSend = (question: string) => {
     // calling of ai services
-    const payLoad = {
-      question: question,
-    };
-    axios
-      .post("http://127.0.0.1:8000/api/v1/chat/", payLoad, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-      .then((res) => {
-        const newAnswer: Answers = {
-          question: question,
-          answer: res.data.answer,
-        };
-        setAnswerStream((prevAnswers) => [...prevAnswers, newAnswer]);
-      });
+    if (question !== "") {
+      ref.current = question;
+      const payLoad = {
+        question: question,
+      };
+      setLoading(true);
+      axios
+        .post("http://127.0.0.1:8000/api/v1/chat/", payLoad, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+        .then((res) => {
+          const newAnswer: Answers = {
+            question: question,
+            answer: res.data.answer,
+          };
+          setAnswerStream((prevAnswers) => [...prevAnswers, newAnswer]);
+          setLoading(false);
+        });
+    }
+  };
+
+  const handleNewChat = () => {
+    setAnswerStream([]);
+    ref.current = "";
   };
 
   return (
     <>
       <div className={styles.container}>
-        <div className={styles.TopBarContainer}>
-          <NavBar />
-        </div>
+        <SideBar handleNewChat={handleNewChat} />
+
         <div className={styles.chatContainer}>
+          <div className={styles.TopBarContainer}>
+            <NavBar />
+          </div>
           {ansStream.length > 0 ? (
-            <>
-              {ansStream.map((value: Answers, index: number) => (
-                <>
-                  <UserQuestion question={value.question} />
-                  <div key={index} className={styles.answerContainer}>
-                    <Answers answer={value.answer} />
-                  </div>
-                </>
-              ))}
-            </>
+            <div className={styles.chatItem}>
+              <>
+                {ansStream.map((value: Answers, index: number) => (
+                  <>
+                    <UserQuestion question={value.question} />
+                    <div key={index} className={styles.answerContainer}>
+                      <Answers answer={value.answer} />
+                    </div>
+                  </>
+                ))}
+              </>
+            </div>
+          ) : !ref.current && ansStream.length === 0 ? (
+            <div className={styles.cardItem}>
+              <ExampleQuestion handleCardQuestions={handleSend} />
+            </div>
+          ) : loading ? (
+            <UserQuestion question={ref.current} />
           ) : (
-            <div></div>
+            ""
           )}
+
           <div className={styles.TextContainer}>
             <UserInput handleSend={handleSend} />
           </div>

@@ -1,7 +1,6 @@
 .questionContainer {
   display: flex;
-  background-color: bisque;
-  box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.5);
+  background-color: #181d25;
   /* justify-content: flex-end; */
   align-items: center;
   max-width: 400px;
@@ -11,7 +10,6 @@
 }
 
 .text {
-  color: black;
   word-wrap: break-word;
   word-break: break-all;
 }

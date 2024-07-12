@@ -18,7 +18,9 @@ const UserInput: React.FC<InputProps> = ({ handleSend }) => {
         />
         <span
           style={{ cursor: "pointer", color: "white" }}
-          onClick={() => handleSend(question)}
+          onClick={() => {
+            handleSend(question);
+          }}
           className="material-symbols-outlined"
         >
           send
