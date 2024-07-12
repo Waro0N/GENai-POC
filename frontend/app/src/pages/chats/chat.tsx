@@ -1,4 +1,4 @@
-import * as THREE from "three";
+// import * as THREE from "three";
 import axios from "axios";
 import styles from "./chats.module.css";
 import UserQuestion from "../../components/question/userQuestion";
@@ -11,7 +11,6 @@ interface Answers {
   question: string;
   answer: string;
 }
-[];
 
 const Chat = () => {
   const [ansStream, setAnswerStream] = useState<Answers[]>([]);
@@ -48,7 +47,7 @@ const Chat = () => {
               {ansStream.map((value: Answers, index: number) => (
                 <>
                   <UserQuestion question={value.question} />
-                  <div className={styles.answerContainer}>
+                  <div key={index} className={styles.answerContainer}>
                     <Answers answer={value.answer} />
                   </div>
                 </>
@@ -57,9 +56,9 @@ const Chat = () => {
           ) : (
             <div></div>
           )}
-        </div>
-        <div className={styles.TextContainer}>
-          <UserInput handleSend={handleSend} />
+          <div className={styles.TextContainer}>
+            <UserInput handleSend={handleSend} />
+          </div>
         </div>
       </div>
     </>

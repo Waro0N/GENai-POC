@@ -11,9 +11,13 @@ const UserInput: React.FC<InputProps> = ({ handleSend }) => {
   return (
     <>
       <div className={styles.InputContainer}>
-        <input onChange={(e) => setQuestion(e.target.value)} type="text" />
+        <textarea
+          className={styles.userInput}
+          placeholder="Type Your Question"
+          onChange={(e) => setQuestion(e.target.value)}
+        />
         <span
-          style={{ cursor: "pointer" }}
+          style={{ cursor: "pointer", color: "white" }}
           onClick={() => handleSend(question)}
           className="material-symbols-outlined"
         >

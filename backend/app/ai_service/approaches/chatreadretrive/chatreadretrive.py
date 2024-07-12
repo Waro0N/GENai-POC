@@ -4,13 +4,13 @@ class ChatReadRetrive:
         self.client=client
 
 
-    def run(self, question: str) -> any:
+    def run(self, prompt: str, question: str) -> any:
         completion = self.client.chat.completions.create(
         model=self.ai_model_name,
         messages=[
         {
             "role": "system",
-            "content": "You are assistant who helps me."
+            "content": prompt
         },
         {
             "role": "user",
