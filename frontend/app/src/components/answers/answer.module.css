@@ -9,6 +9,18 @@
   padding: 20px;
 }
 
+.errorContainer {
+  display: flex;
+  background-color: #010409;
+  align-items: center;
+  max-width: 700px;
+  gap: 10px;
+  /* height: 50px; */
+  max-height: 700px;
+  /* margin-left: auto; */
+  padding: 20px;
+}
+
 .answerText {
   word-wrap: break-word;
   word-break: break-all;

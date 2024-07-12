@@ -10,12 +10,12 @@ const ExampleQuestion: React.FC<ExampleQuestionProps> = ({
 }) => {
   const questions = [
     {
-      key: "This is Question",
-      value: "This is Question",
+      key: "Help me Analyze my data",
+      value: "Help me Analyze my data",
     },
     {
-      key: "This is Question",
-      value: "This is Question",
+      key: "Tell me the population analysis of India for last 10 years",
+      value: "Tell me the population analysis of India for last 10 years",
     },
   ];
 
@@ -23,7 +23,7 @@ const ExampleQuestion: React.FC<ExampleQuestionProps> = ({
     <>
       <div className={styles.cardContainer}>
         {questions.map((value, index) => (
-          <div onClick={() => handleCardQuestions(value.value)}>
+          <div key={index} onClick={() => handleCardQuestions(value.value)}>
             <ExampleCard question={value.value} />
           </div>
         ))}

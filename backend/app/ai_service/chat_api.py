@@ -18,7 +18,6 @@ chat_approaches = ChatReadRetrive(ai_model_name=CHAT_MODEL, client=client)
 async def chat_retrive(requests: Request):
     data = await requests.json()
     prompt = ai_prompts.get('default Prompt')
-    print(prompt)
     question = data.get('question')
     r = chat_approaches.run(prompt,question)
     

@@ -6,6 +6,8 @@
   width: 278px;
   position: absolute;
   background-color: #010409;
+  gap: 10px;
+  overflow-y: auto;
 }
 
 .newChatButton {

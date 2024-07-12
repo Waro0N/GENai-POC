@@ -8,6 +8,8 @@ import { useRef, useState } from "react";
 import NavBar from "../../components/navBar/navBar";
 import ExampleQuestion from "../../components/exampleCards.tsx/exampleQuestions";
 import SideBar from "../../components/SideBAr/sideBar";
+import Error from "../../components/answers/error";
+import AnswerLoading from "../../components/answers/answerLoading";
 
 interface Answers {
   question: string;
@@ -18,6 +20,7 @@ const Chat = () => {
   const [ansStream, setAnswerStream] = useState<Answers[]>([]);
   const ref = useRef("");
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleSend = (question: string) => {
     // calling of ai services
@@ -40,6 +43,10 @@ const Chat = () => {
           };
           setAnswerStream((prevAnswers) => [...prevAnswers, newAnswer]);
           setLoading(false);
+        })
+        .catch((e) => {
+          setLoading(false);
+          setError(e.message);
         });
     }
   };
@@ -76,7 +83,21 @@ const Chat = () => {
               <ExampleQuestion handleCardQuestions={handleSend} />
             </div>
           ) : loading ? (
-            <UserQuestion question={ref.current} />
+            <div className={styles.loading}>
+              <UserQuestion question={ref.current} />
+              <div className={styles.answerContainer}>
+                <AnswerLoading lodingMessage="Processing..." />
+              </div>
+            </div>
+          ) : error ? (
+            <>
+              <div className={styles.errorContainer}>
+                <UserQuestion question={ref.current} />
+                <div className={styles.answerContainer}>
+                  <Error error={error} />
+                </div>
+              </div>
+            </>
           ) : (
             ""
           )}
