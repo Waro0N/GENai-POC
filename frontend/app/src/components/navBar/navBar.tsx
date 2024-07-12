@@ -3,7 +3,7 @@ import styles from "./navBar.module.css";
 const NavBar = () => {
   return (
     <>
-      <div className={styles.navContainer}>NavBAr</div>
+      <div className={styles.navContainer}>DataDoom-AI</div>
     </>
   );
 };

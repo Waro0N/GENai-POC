@@ -17,8 +17,10 @@ chat_approaches = ChatReadRetrive(ai_model_name=CHAT_MODEL, client=client)
 @router.post("/")
 async def chat_retrive(requests: Request):
     data = await requests.json()
-    prompt = ai_prompts.get('default Prompt')
     question = data.get('question')
+    prompt = ai_prompts.get('default Prompt')
     r = chat_approaches.run(prompt,question)
-    
     return(r)
+    
+    
+    
