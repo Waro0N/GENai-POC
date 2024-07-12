@@ -5,6 +5,7 @@ import UserQuestion from "../../components/question/userQuestion";
 import Answers from "../../components/answers/answer";
 import UserInput from "../../components/userInput/userInput";
 import { useState } from "react";
+import NavBar from "../../components/navBar/navBar";
 
 interface Answers {
   question: string;
@@ -38,7 +39,9 @@ const Chat = () => {
   return (
     <>
       <div className={styles.container}>
-        <div></div>
+        <div className={styles.TopBarContainer}>
+          <NavBar />
+        </div>
         <div className={styles.chatContainer}>
           {ansStream.length > 0 ? (
             <>

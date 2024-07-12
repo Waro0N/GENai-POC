@@ -12,6 +12,7 @@
 }
 
 .answerText {
+  color: black;
   word-wrap: break-word;
   word-break: break-all;
 }
