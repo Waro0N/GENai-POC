@@ -21,6 +21,4 @@ async def chat_retrive(requests: Request):
     prompt = ai_prompts.get('default Prompt')
     r = chat_approaches.run(prompt,question)
     return(r)
-    
-    
-    
+        

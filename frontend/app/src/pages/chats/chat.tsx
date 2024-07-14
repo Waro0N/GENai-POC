@@ -10,6 +10,7 @@ import ExampleQuestion from "../../components/exampleCards.tsx/exampleQuestions"
 import SideBar from "../../components/SideBAr/sideBar";
 import Error from "../../components/answers/error";
 import AnswerLoading from "../../components/answers/answerLoading";
+import PromptCards from "../../components/prompt-cards/prompt-card";
 
 interface Answers {
   question: string;
