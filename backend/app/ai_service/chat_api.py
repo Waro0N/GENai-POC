@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException,Request
+from fastapi import APIRouter, Request
 from groq import Groq
 from ai_service.approaches.chatreadretrive.chatreadretrive import ChatReadRetrive 
 from ai_service.approaches.chatreadretrive.prompts import ai_prompts
