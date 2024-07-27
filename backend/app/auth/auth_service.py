@@ -1,12 +1,12 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from datetime import timedelta
 from fastapi.security import OAuth2PasswordRequestForm
-from general import authenticat_user, ACCESS_TOKEN_EXPIRES_MINUTES, create_access_token, Token, db
+from general import authenticate_user, ACCESS_TOKEN_EXPIRES_MINUTES, create_access_token, Token, db
 router = APIRouter()
 
 @router.post("/token", response_model=Token)
 async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
-    user = authenticat_user(db, form_data.username, form_data.password)
+    user = authenticate_user(db, form_data.username, form_data.password)
     if not user:
         raise HTTPException(status_code = status.HTTP_401_UNAUTHORISED, detail="Incorrect username or psword", headers={"WWW-Authenticate": "Bearer"})
     access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRES_MINUTES)
