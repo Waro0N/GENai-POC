@@ -17,14 +17,14 @@ def get_db():
 
 
 origins = [
+    "chrome-extension://nmdologaecmnacehacglllpoiknedden",
    "*"
 ]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_origins=["*"],
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allow_headers=["Content-Type", "Authorization"],
 )
 
 app.include_router(api_router, prefix="/api/v1")
